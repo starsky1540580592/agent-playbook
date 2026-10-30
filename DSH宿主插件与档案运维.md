@@ -92,6 +92,13 @@
 - **`@dsh-external/{{EMAIL}}`**：对话内文本搜索（Ctrl+F），`github:beijingwahw/dsh-conv-search`，web 客户端插件，`dsh.client.inject: ["@deepseek-ai/dsh-client-runtime"]`，peer 只需 `dsh-storage-domain >=0.0.1-0`，宿主 0.2.1-rc.2 满足。
 - v1.0.1 之后新增的插件见记忆库 `dsh插件` 项目的 overview 条目（清单会漂，本文件不重复维护）。
 
+## 六点五、PowerShell 7 并存（2026-10-30）
+
+- **7.6.9 已装**：`{{LOCAL_PATH}} Files\PowerShell\7\pwsh.exe`，机器 PATH 已注册，新终端敲 `pwsh` 即进；开始菜单/Windows Terminal 自动出现入口。与 5.1 **完全并存**（`powershell` 命令仍指 5.1）。
+- **DSH 的 `pwsh` 工具仍走 5.1**（System32 路径），未改宿主。混合调用约定：常规走 5.1（脚本纪律已适配），5.1 真报错时显式调 `& '{{LOCAL_PATH}} Files\PowerShell\7\pwsh.exe' ...`。
+- **执行策略**：两版均 RemoteSigned；用工具写入的 `.ps1` 可能被当「未签名远程文件」拒绝——绕法：不走脚本文件，直接内联 `-Command` 执行（不受执行策略限制）。
+- **下载安装包**：GitHub releases 的 MSI（约 117MB）走 Python+代理下载（`_asr/tmp/` 曾存一份作重装备份）。
+
 ## 七、工作区 ACL（回滚手段已不存在）
 
 工作区根目录上有一条经用户批准的 `{{HOST}}\{{USER}}:(F)` 完全控制项，当初是为了修复 Windows 文件权限（否则沙箱无法在本目录写入；仅作用于本目录、不继承、不涉及工作区外）。**该 ACE 目前仍然生效**，工作区内写入正常。

@@ -1,22 +1,20 @@
 # agent-playbook
 
-A personal playbook & experience backup for collaborating with AI coding agents.
-与 AI 编码智能体协作的个人经验手册与备份(工作区治理 / 插件运维 / 踩坑记录 / 流程纪律)。
+我和 AI 编码助手长期协作攒下来的经验文档,原样备份在这里:一个多项目工作区(字幕、Premiere 插件、DSH 宿主运维)在用的那套规则——怎么授权、怎么防手滑、坑踩过之后怎么把教训写成能执行的判据。
 
-> **Privacy note**: all local paths, usernames, hostnames and emails are replaced with placeholders (`{{USER}}`, `{{USERHOME}}`, `{{WORKSPACE}}`, `{{HOST}}`, `{{PROXY}}`, `{{LOCAL_PATH}}`, `{{EMAIL}}`) by an automated export pipeline with a three-pass sanitization gate. Replace them with your own environment when reusing.
-> 所有本机路径/用户名/主机名/邮箱已经三重脱敏闸门替换为占位符,复用时替换为你自己的环境。
+## 里面有什么
 
-## Contents
+- **AGENTS.md.example** —— 每次对话都会注入的总则:授权分级、成本闸门、发布前必查、完成声明。要用的话改名为 AGENTS.md。
+- **安全细则.md** —— 不可逆操作(删除、归档)的执行细则。
+- **字幕项目说明.md** —— 字幕流水线的文件角色、重跑流程、时间轴规则。
+- **DSH宿主插件与档案运维.md** —— 宿主档案的插件安装、配置快照、网络坑。
+- **工作区治理定案.md** —— 几次调研的结论:同类 agent 文档怎么写、上下文压缩阈值怎么定、网络通道怎么选。
+- **工作区目录地图.md** —— 顶层目录速查,找文件先看它。
 
-| File | What it is |
-|---|---|
-| `AGENTS.md.example` | Working agreements for the agent: authorization tiers, cost gates, release checks, completion-declaration ladder. Rename to `AGENTS.md` when using. |
-| `安全细则.md` | Safety rules for irreversible operations (deletion/archival quick reference). |
-| `字幕项目说明.md` | Subtitle project playbook (pipeline, file roles, timing rules). |
-| `DSH宿主插件与档案运维.md` | DSH host plugin & profile operations manual. |
-| `工作区治理定案.md` | Researched decisions: AGENTS.md benchmarking, context compaction thresholds, network channels. |
-| `工作区目录地图.md` | Top-level workspace directory map for targeted lookups. |
+## 关于占位符
 
-## Why public
+所有本机路径、用户名、主机名都被导出脚本自动换成了 `{{USER}}`、`{{USERHOME}}`、`{{LOCAL_PATH}}` 这类占位符(带三重校验,防止漏网)。想在自己环境复用,把占位符换回去就行。
 
-These documents were written to be reused: judgment sentences, hard gates and post-mortems that generalize beyond one machine. 踩坑经验只有被复用才有价值。
+## 为什么公开
+
+这些规则本来就是写成判据句、准备复用的。踩过的坑锁在私有仓库里,一点价值都没有。
