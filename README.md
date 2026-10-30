@@ -10,7 +10,7 @@ A personal playbook & experience backup for collaborating with AI coding agents.
 
 | File | What it is |
 |---|---|
-| `AGENTS.md` | Working agreements for the agent: authorization tiers, cost gates, release checks, completion-declaration ladder. |
+| `AGENTS.md.example` | Working agreements for the agent: authorization tiers, cost gates, release checks, completion-declaration ladder. Rename to `AGENTS.md` when using. |
 | `安全细则.md` | Safety rules for irreversible operations (deletion/archival quick reference). |
 | `字幕项目说明.md` | Subtitle project playbook (pipeline, file roles, timing rules). |
 | `DSH宿主插件与档案运维.md` | DSH host plugin & profile operations manual. |
