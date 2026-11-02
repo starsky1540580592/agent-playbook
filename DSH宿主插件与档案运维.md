@@ -25,7 +25,7 @@
 
 - 更新插件：`dsh plugin --profile desktop add <包>@<版本>`（会同时把版本钉进 `package.json` 的 `dependencies`）。
 - **`dsh plugin add` 只给「新增依赖」自动追加 `dsh.profile.bundles`**；既有依赖升级不会进启用列表（meow-memory、vision-toolkit 都踩过），要手动往 bundles 里补一行。
-- **通用网络环境（自 AGENTS.md §3 外移，2026-10-30）**：沙箱受限令牌下 Schannel 拿不到凭据 → PowerShell / curl.exe 的 HTTPS 一律失败；**Python 自带 OpenSSL 正常**（可直连，也可用本机代理 `http://{{PROXY}}`），下载、装包一律走 Python。`cdn.jsdelivr.net` 直连被对端重置（10054 / ECONNRESET），走 7890 代理才通；宿主（Node fetch，不走代理）拉不到 jsdelivr 资源。
+- **通用网络环境（自 AGENTS.md §3 外移，2026-10-30）**：沙箱受限令牌下 Schannel 拿不到凭据 → PowerShell / curl.exe 的 HTTPS 一律失败；**Python 自带 OpenSSL 正常**（可直连，也可用本机代理 `http://{{PROXY}}`），下载、装包一律走 Python。`cdn.jsdelivr.net` 直连被对端重置（10054 / ECONNRESET），走 {{PROXY_PORT}} 代理才通；宿主（Node fetch，不走代理）拉不到 jsdelivr 资源。
 - **GitHub 直装插件**（npm registry 404 的包，如 `@dsh-external/dsh-conv-search`）：
   1. 先 `git ls-remote` 测通路——沙箱下 git 默认走 schannel 会报 `SEC_E_NO_CREDENTIALS`；
   2. 用环境变量让 git（含 pnpm 内部 spawn 的）改用 OpenSSL 后端：`GIT_CONFIG_COUNT=1 GIT_CONFIG_KEY_0=http.sslBackend GIT_CONFIG_VALUE_0=openssl`；
